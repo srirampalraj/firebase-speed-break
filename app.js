@@ -19,17 +19,16 @@ const PORT = 3000;
 app.use(express.json());
 
 // Route to handle POST requests to add data
-app.post('/data', (req, res) => {
-  console.log(req);
+app.post('/addVehicle', (req, res) => {
   // Sample data
   const postData = {
-    name: req.body.name,
-    email: req.body.email,
+    speed: req.body.speed,
+    dateTime: req.body.dateTime,
   };
 
   // Push the data to Firebase
   database
-    .ref('data')
+    .ref('db')
     .push(postData)
     .then(() => {
       res.status(201).json({ message: 'Data added successfully' });
@@ -37,11 +36,6 @@ app.post('/data', (req, res) => {
     .catch((error) => {
       res.status(500).json({ error: error.message });
     });
-});
-
-app.get('/status', (req, res) => {
-  res.type('text');
-  res.end('Status: Active');
 });
 
 // Start the server
