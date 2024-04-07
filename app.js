@@ -39,6 +39,11 @@ app.post('/data', (req, res) => {
     });
 });
 
+app.get('/status', (req, res) => {
+  res.type('text');
+  res.end('Status: Active');
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
