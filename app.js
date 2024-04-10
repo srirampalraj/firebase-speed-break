@@ -22,8 +22,8 @@ app.use(express.json());
 app.post('/addVehicle', (req, res) => {
   // Sample data
   const postData = {
-    speed: req.body.speed,
-    dateTime: req.body.dateTime,
+    speed: parseInt(req.body.speed).toString(),
+    dateTime: new Date().toISOString(),
   };
 
   // Push the data to Firebase
